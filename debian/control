@@ -1,0 +1,21 @@
+Source: apt-transport-droidian
+Priority: optional
+Maintainer: Eugenio Paolantonio (g7) <eugenio@droidian.org>
+Build-Depends: debhelper-compat (= 13),
+               libapt-pkg-dev,
+               meson (>= 0.62.0),
+               pkg-config,
+Standards-Version: 4.6.1.0
+Section: libs
+Homepage: https://gitlab.com/droidian/apt-transport-droidian
+Vcs-Git: https://github.com/droidian/apt-transport-droidian.git
+Vcs-Browser: https://github.com/droidian/apt-transport-droidian
+Rules-Requires-Root: no
+
+Package: apt-transport-droidian
+Architecture: any
+Depends: ${misc:Depends},
+         ${shlibs:Depends},
+Description: APT transport for Droidian snapshots
+ This package provides the droidian+http and droidian+https APT
+ transports.
