@@ -24,6 +24,7 @@ class DroidianTransportMethod : public pkgAcqMethod
   virtual bool URIAcquire(std::string const &Message, FetchItem *Itm) APT_OVERRIDE;
 
   static std::string Version;
+  static std::string Variant;
   static std::string SnapshotSearchPath;
 
   public:

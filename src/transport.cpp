@@ -22,15 +22,18 @@
 
 #define TRANSPORT_PREFIX "droidian+"
 #define DEFAULT_VERSION "current"
+#define DEFAULT_VARIANT ""
 #define DEFAULT_SNAPSHOT_PATH "/snapshots/"
 
 std::string DroidianTransportMethod::Version;
+std::string DroidianTransportMethod::Variant;
 std::string DroidianTransportMethod::SnapshotSearchPath;
 
 DroidianTransportMethod::DroidianTransportMethod()
 : pkgAcqMethod("1.0", SingleInstance | SendConfig | NeedsCleanup)
 {
     Version = "";
+    Variant = "";
     SnapshotSearchPath = "";
 }
 
@@ -43,6 +46,7 @@ bool DroidianTransportMethod::Configuration(std::string Message)
     }
 
     Version = _config->Find("Acquire::Droidian::Version", DEFAULT_VERSION);
+    Variant = _config->Find("Acquire::Droidian::Variant", DEFAULT_VARIANT);
     SnapshotSearchPath = _config->Find("Acquire::Droidian::SnapshotSearchPath", DEFAULT_SNAPSHOT_PATH);
 
     return true;
@@ -72,6 +76,7 @@ bool DroidianTransportMethod::URIAcquire(std::string const &Message, FetchItem *
         current_repository +
         SnapshotSearchPath +
         Version +
+        (Variant.empty() ? "" : "-" + Variant) +
         "/" +
         file_path);
 
