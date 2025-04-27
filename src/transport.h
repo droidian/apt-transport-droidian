@@ -20,8 +20,8 @@
 
 class DroidianTransportMethod : public pkgAcqMethod
 {
-  virtual bool Configuration(std::string Message) APT_OVERRIDE;
-  virtual bool URIAcquire(std::string const &Message, FetchItem *Itm) APT_OVERRIDE;
+  bool Configuration(std::string Message) override;
+  bool URIAcquire(std::string const &Message, FetchItem *Itm) override;
 
   static std::string Version;
   static std::string Variant;
